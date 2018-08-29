@@ -1,0 +1,32 @@
+{
+    "pages": [
+        "pages/search/search",
+        "pages/classes/classes"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "迷你菜谱",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "backgroundColor": "#FFF",
+        "borderStyle": "white",
+        "selectedColor": "#09BB07",
+        "color": "#999",
+        "list": [
+            {
+                "iconPath": "resource/images/icon1.png",
+                "selectedIconPath": "resource/images/icon1-p.png",
+                "pagePath": "pages/search/search",
+                "text": "搜索"
+            },
+            {
+                "iconPath": "resource/images/icon2.png",
+                "selectedIconPath": "resource/images/icon2-p.png",
+                "pagePath": "pages/classes/classes",
+                "text": "分类"
+            }
+        ]
+    }
+}

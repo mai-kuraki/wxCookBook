@@ -1,0 +1,6 @@
+<view class='container'>
+    <view class='search-wrap'>
+        <input bindinput="bindKeyInput" type='text' placeholder="今天你想吃什么" auto-focus />
+        <image src='../../resource/images/search.png' bindtap="toSearch"/>
+    </view>
+</view>

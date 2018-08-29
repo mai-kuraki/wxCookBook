@@ -5,7 +5,7 @@ Page({
         wx.showLoading({title: '加载中...'})
         wx.request({
             url: `http://apis.juhe.cn/cook/query.php?key=${config.apiKey}&menu=${encodeURIComponent(keyWord)}`,
-            success: function (res) {
+            success: (res) => {
                 wx.hideLoading();
                 let data = res.data;
                 console.log(data)

@@ -1,6 +1,65 @@
 <view class='container'>
-    <view class='search-wrap'>
-        <input bindinput="bindKeyInput" type='text' placeholder="今天你想吃什么" auto-focus />
+    <view class='search-wrap {{listShow?"search-wrap-hide":""}}'>
+        <input bindinput="bindKeyInput" type='text' placeholder="今天你想吃什么" bindconfirm="toSearch" auto-focus />
         <image src='../../resource/images/search.png' bindtap="toSearch"/>
+    </view>
+    <view class='detail-page-wrap detail-page-wrap-show'>
+        
+    </view>
+    <view class='detail-page'>
+            <view class='cover'>
+                <image mode='widthFix' src='{{detailData.albums[0]}}'/>
+            </view>
+            <view class='content'>
+                <view class='title'><text>{{detailData.title}}</text></view>
+                <view class='tags'><text wx:for="{{detailData.tags}}" wx:key="index">{{item}}</text></view>
+                <view class='imtro'><text>{{detailData.imtro}}</text></view>
+                <view class='ingredients'>
+                    <view class='tt'><text>主料</text></view>
+                    <view>
+                    <view class='ing-row'>
+                        <text>猪蹄</text>
+                        <text>500g</text>
+                    </view>
+                    <view class='ing-row'>
+                        <text>猪蹄</text>
+                        <text>500g</text>
+                    </view>
+                    </view>
+                </view>
+                <view class='ingredients'>
+                    <view class='tt'><text>辅料</text></view>
+                    <view>
+                    <view class='ing-row'>
+                        <text>猪蹄</text>
+                        <text>500g</text>
+                    </view>
+                    <view class='ing-row'>
+                        <text>猪蹄</text>
+                        <text>500g</text>
+                    </view>
+                    </view>
+                </view>
+                <view class='steps-item'>
+                    <view class='tt'><text>步骤</text></view>
+                    <view>
+                        <view class='step-row' wx:for="{{detailData.steps}}" wx:key="index">
+                            <image mode='widthFix' src='{{item.img}}'/>
+                            <view class='in'><text>{{item.step}}</text></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+    </view>
+    <view class='result-item'>
+        <view class='block' data-index="{{index}}" bindtap="toDetail"  wx:for="{{resultItem}}" wx:key="unique">
+            <view class='cover'>
+                <image src='{{item.albums[0]}}'/>
+            </view>
+            <view class='info'>
+                <view class='name'><text>{{item.title}}</text></view>
+                <view class='sum'><text>{{item.burden}}</text></view>
+            </view>
+        </view>
     </view>
 </view>

@@ -1,12 +1,17 @@
 <view class='container'>
-    <view class='search-wrap {{listShow?"search-wrap-hide":""}}'>
+    <view class='search-wrap {{!searchInput?"search-wrap-hide":""}}'>
         <input bindinput="bindKeyInput" type='text' placeholder="今天你想吃什么" bindconfirm="toSearch" auto-focus />
         <image src='../../resource/images/search.png' bindtap="toSearch"/>
     </view>
-    <view class='detail-page-wrap detail-page-wrap-show'>
-        
-    </view>
+    <block wx:if="{{detailMode}}">
+    <view class='detail-page-mask {{maskStatus?"detail-page-mask-show":""}}' style='left: {{touchx}}px;top: {{touchy}}px'></view>
     <view class='detail-page'>
+            <view class='fix-head'>
+                <view class='action' bindtap='backtoItem'>
+                    <image src='../../resource/images/back.png'></image>
+                    <view class='label'><text>{{detailData.title}}</text></view>
+                </view>
+            </view>
             <view class='cover'>
                 <image mode='widthFix' src='{{detailData.albums[0]}}'/>
             </view>
@@ -17,26 +22,18 @@
                 <view class='ingredients'>
                     <view class='tt'><text>主料</text></view>
                     <view>
-                    <view class='ing-row'>
-                        <text>猪蹄</text>
-                        <text>500g</text>
-                    </view>
-                    <view class='ing-row'>
-                        <text>猪蹄</text>
-                        <text>500g</text>
+                    <view class='ing-row' wx:for="{{detailData.ingredients}}" wx:key="index">
+                        <text>{{item[0]}}</text>
+                        <text>{{item[1]}}</text>
                     </view>
                     </view>
                 </view>
                 <view class='ingredients'>
                     <view class='tt'><text>辅料</text></view>
                     <view>
-                    <view class='ing-row'>
-                        <text>猪蹄</text>
-                        <text>500g</text>
-                    </view>
-                    <view class='ing-row'>
-                        <text>猪蹄</text>
-                        <text>500g</text>
+                    <view class='ing-row' wx:for="{{detailData.burden}}" wx:key="index">
+                        <text>{{item[0]}}</text>
+                        <text>{{item[1]}}</text>
                     </view>
                     </view>
                 </view>
@@ -51,7 +48,16 @@
                 </view>
             </view>
     </view>
+    </block>
+    <block wx:else>
+    <block wx:if="{{listShow}}">
     <view class='result-item'>
+        <view class='fix-head'>
+                <view class='action' bindtap='backtoSearch'>
+                    <image src='../../resource/images/back.png'></image>
+                    <view class='label'><text>{{keyWord}}</text></view>
+                </view>
+            </view>
         <view class='block' data-index="{{index}}" bindtap="toDetail"  wx:for="{{resultItem}}" wx:key="unique">
             <view class='cover'>
                 <image src='{{item.albums[0]}}'/>
@@ -62,4 +68,6 @@
             </view>
         </view>
     </view>
+    </block>
+    </block>
 </view>

@@ -12,7 +12,7 @@
     border: none;
     border-radius: 10rpx;
     padding: 0px 100rpx 0rpx 28rpx;
-    margin-top: 50%;
+    margin-top: 40vh;
     position: relative;
     transition: all 250ms ease;
 }
@@ -36,18 +36,17 @@
     width: 100%;
     height: 100%;
     padding: 38rpx;
+    padding-top: 158rpx;
 }
 .result-item .block{
     width: 100%;
     display: flex;
     margin-bottom: 32rpx;
     background: #FFF;
-    overflow: hidden;
-    border-radius: 12rpx;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 }
 .result-item .block .cover{
     width: 210rpx;
+    height: 150rpx;
     overflow: hidden;
 }
 .result-item .block .cover image{
@@ -56,7 +55,8 @@
 }
 .result-item .block .info{
     width: calc(100% - 120rpx);
-    padding: 24rpx 30rpx 24rpx 24rpx;
+    height: 150rpx;
+    padding: 0rpx 30rpx 24rpx 24rpx;
 }
 .result-item .block .info .name,.result-item .block .info .sum,.result-item .block .info .tag{
     overflow: hidden;
@@ -77,26 +77,6 @@
     color: #999;
     float:left;
 }
-.detail-page-wrap{
-    /* overflow: hidden;
-    width: 200vw;
-    height: 200vh;
-    border-radius: 100vh;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    z-index: 999;
-    transform: scale(0);
-    transition: all 850ms ease;
-    pointer-events: none;
-    margin-left: -100vw;
-    margin-top: -100vh;
-    padding: 100vw 100vh; */
-}
-.detail-page-wrap-show{
-    /* transform: scale(1);
-    pointer-events: inherit; */
-}
 .detail-page{
     width: 100%;
     height: 100%;
@@ -105,10 +85,27 @@
     top: 0px;
     background: #FFF;
     overflow-y: auto;
+    padding-top: 120rpx;
     /* pointer-events: none; */
 }
-.detail-page-wrap-show .detail-page{
-    pointer-events: inherit;
+.detail-page-mask{
+    position: fixed;
+    z-index: 9999;
+    display: block;
+    left: 50%;
+    top: 50%;
+    width: 0rpx;
+    height: 0rpx;
+    border: solid 240vh #FFF;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: content-box;
+    transition: all 567ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    pointer-events: none;
+}
+.detail-page-mask-show{
+    width: 240vh;
+    height: 240vh;
 }
 .detail-page .cover{
     width: 100%;
@@ -131,6 +128,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 20rpx;
+    width: 102%;
 }
 .detail-page .content .tags text{
     padding: 4rpx 18rpx;
@@ -204,4 +202,30 @@
     font-size: 32rpx;
     line-height: 1.6;
     margin-top: 20rpx;
+}
+.detail-page .fix-head,.result-item .fix-head{
+    width: 100%;
+    height: 132rpx;
+    background: #FFF;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    padding-top: 36rpx;
+}
+.fix-head .action{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 30rpx;
+}
+.fix-head .action image{
+    width: 32rpx;
+    height: 32rpx;
+}
+.fix-head .action .label{
+    font-size: 28rpx;
+    padding-left: 20rpx;
 }
